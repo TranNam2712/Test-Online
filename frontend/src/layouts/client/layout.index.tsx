@@ -1,4 +1,4 @@
-import Header from "./header.client";
+import Header from "./header/header.client";
 import { Outlet } from "react-router-dom";
 import Footer from "./footer.client";
 
