@@ -21,53 +21,55 @@ const MenuNavbar = ({ categories }: Menu) => {
   const [hoveredCategory, setHoveredCategory] = useState<Category | null>(null);
 
   return (
-    <div className="relative hidden md:block ">
-      {/* Main Menu */}
-      <ul className="flex justify-start items-center bg-white z-10 relative">
-        {categories.map((category) => (
-          <li
-            key={category.slug}
-            className="cursor-pointer relative"
-            onMouseEnter={() => setHoveredCategory(category)}
-            onMouseLeave={() => setHoveredCategory(null)}
-          >
-            <NavLink
-              to={category.slug}
-              className={({ isActive }) =>
-                `relative px-4 py-2 transition-colors duration-300 hover:text-blue-600
-     ${isActive ? "text-blue-600" : "text-gray-800"}`
-              }
+    <div className="w-full hidden md:flex justify-center  ">
+      <div className="relative inline-block">
+        {/* Main Menu */}
+        <ul className="flex justify-start items-center bg-white z-10 relative">
+          {categories.map((category) => (
+            <li
+              key={category.slug}
+              className="cursor-pointer relative"
+              onMouseEnter={() => setHoveredCategory(category)}
+              onMouseLeave={() => setHoveredCategory(null)}
             >
-              <Text
-                className={`px-2
-    relative text-xs lg:text-lg
+              <NavLink
+                to={category.slug}
+                className={({ isActive }) =>
+                  `relative px-4 transition-colors duration-300 hover:text-blue-600
+     ${isActive ? "text-blue-600" : "text-gray-800"}`
+                }
+              >
+                <Text
+                  className={`px-4
+    relative text-xs lg:text-base
     after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:translate-x-[-50%]
     after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-600
     after:transition-all after:duration-300 after:ease-in-out
   `}
-              >
-                {category.title}
-              </Text>
-            </NavLink>
-          </li>
-        ))}
-      </ul>
-      {/* Dropdown */}
-      {hoveredCategory && hoveredCategory.subcategories.length > 0 && (
-        <div
-          className="absolute top-full left-0 w-full bg-white shadow-lg p-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 transition-all z-50 rounded-2xl"
-          onMouseEnter={() => setHoveredCategory(hoveredCategory)}
-          onMouseLeave={() => setHoveredCategory(null)}
-        >
-          {hoveredCategory.subcategories.map((sub) => (
-            <NavLink key={sub.slug} to={sub.slug} className="pb-2">
-              <Text className="text-xs lg:text-sm text-gray-800 hover:text-blue-600">
-                {sub.title}
-              </Text>
-            </NavLink>
+                >
+                  {category.title}
+                </Text>
+              </NavLink>
+            </li>
           ))}
-        </div>
-      )}
+        </ul>
+        {/* Dropdown */}
+        {hoveredCategory && hoveredCategory.subcategories.length > 0 && (
+          <div
+            className="absolute top-full left-0 w-full bg-white shadow-lg p-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 transition-all z-50 rounded-2xl"
+            onMouseEnter={() => setHoveredCategory(hoveredCategory)}
+            onMouseLeave={() => setHoveredCategory(null)}
+          >
+            {hoveredCategory.subcategories.map((sub) => (
+              <NavLink key={sub.slug} to={sub.slug} className="pb-2">
+                <Text className="text-xs lg:text-sm text-gray-800 hover:text-blue-600">
+                  {sub.title}
+                </Text>
+              </NavLink>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

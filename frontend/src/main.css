@@ -41,12 +41,6 @@
   src: url("./fonts/Poppins-Black.ttf") format("truetype");
 }
 
-@theme {
-  /* Colors */
-  --color-brightColor: #039bab;
-  --color-backgroundColor: #03c9d7;
-  --color-textColor: #333333;
-}
 body,
 html {
   font-family: "Poppins", sans-serif;

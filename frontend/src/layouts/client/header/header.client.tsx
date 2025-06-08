@@ -112,12 +112,12 @@ const Header = () => {
   }, []);
 
   return (
-    <nav className="w-full bg-blue-700 md:bg-white py-2 px-2 md:py-4 flex justify-between md:justify-around items-center">
+    <nav className="w-full bg-blue-700 md:bg-white py-2 px-2 flex justify-between md:justify-around items-center">
       <div className="w-full max-w-screen-xl mx-auto flex justify-between items-center">
         {/* toggle button */}
         <MenuToggle categories={menu.categories} />
         {/* logo */}
-        <div className="w-50 pr-3">
+        <div className="w-50">
           <NavLink to="/">
             <img
               className="w-50 md:w-full"
