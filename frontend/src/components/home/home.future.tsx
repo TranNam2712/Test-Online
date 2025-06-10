@@ -4,13 +4,13 @@ import { NavLink } from "react-router-dom";
 const Future = () => {
   const items = [
     {
-      image: "dinhhuong1.jpg",
+      image: "images/home/dinhhuong1.jpg",
       title: "Đại học",
       description:
         "Ngân hàng câu hỏi trắc nghiệm online đầy đủ các môn học đại cương, môn học chuyên ngành giúp các bạn Sinh viên ôn thi kết thúc học phần/tín chỉ ở trường ĐH-CĐ đạt kết quả tốt.",
     },
     {
-      image: "dinhhuong2.jpg",
+      image: "images/home/dinhhuong2.jpg",
       title: "Hướng nghiệp",
       description:
         "Hệ thống ngân hàng câu hỏi và các bài thi trắc nghiệm về nghề nghiệp như ôn thi bằng lái xe, trắc nghiệm công viên chức, trắc nghiệm tính cách, MBTI Test, IQ/EQ Test.",
@@ -20,7 +20,7 @@ const Future = () => {
   return (
     <section
       className="bg-cover mt-10 bg-center bg-no-repeat py-16 px-4"
-      style={{ backgroundImage: "url('invision-bg.jpg')" }}
+      style={{ backgroundImage: "url('images/home/invision-bg.jpg')" }}
     >
       <div className="max-w-7xl mx-auto text-center text-white">
         <Heading fontSize={{ base: "2xl", md: "4xl" }} mb={12}>
