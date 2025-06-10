@@ -21,12 +21,18 @@ const HotTestCard = ({ listItems }: { listItems: Item[] }) => {
         <div className="overflow-y-scroll">
           {listItems.map((item) => (
             <div className="flex flex-col gap-1 p-2">
+              {/* title item */}
               <Text>{item.title}</Text>
+
+              {/* from item */}
               <Text>{item.from}</Text>
               <div className="flex gap-5 mb-2">
+                {/* test */}
                 <Text color={"gray"} fontSize={"xs"}>
                   {item.questions} câu
                 </Text>
+
+                {/* views */}
                 <Text color={"gray"} fontSize={"xs"}>
                   {item.views} lượt thi
                 </Text>

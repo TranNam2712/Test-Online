@@ -1,11 +1,7 @@
 import CategoryComponent from "../../components/category/category.index";
 
 const Category = () => {
-  return (
-    <>
-      <CategoryComponent />
-    </>
-  );
+  return <CategoryComponent />;
 };
 
 export default Category;

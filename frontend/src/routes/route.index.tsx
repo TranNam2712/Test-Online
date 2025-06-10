@@ -4,8 +4,8 @@ import LayoutClient from "../layouts/client/layout.index";
 import Home from "../components/home/home.index";
 import Login from "../pages/auth/login";
 import Register from "../pages/auth/register";
-import Category from "../pages/category/category.page";
-import SubCategory from "../pages/category/sub-category.page";
+import Category from "../pages/category/category";
+import SubCategory from "../pages/category/sub-category";
 
 const router = createBrowserRouter([
   {
