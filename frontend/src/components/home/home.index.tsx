@@ -3,7 +3,7 @@ import TestOnline from "./home.test-online";
 import ImageSlider from "./home.slider";
 
 const Home = () => {
-  const images = ["banner1.webp", "banner2.png"];
+  const images = ["images/home/banner1.webp", "images/home/banner2.png"];
   return (
     <>
       <div className="w-full flex-col justify-center items-center">

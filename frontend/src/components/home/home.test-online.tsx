@@ -17,17 +17,17 @@ const TestOnline = () => {
         {[
           {
             title: "ĐỀ THI HỌC KỲ",
-            img: "typeTest2.jpg",
+            img: "images/home/typeTest2.jpg",
             desc: "Ngân hàng câu hỏi đầy đủ các môn cấp 1,2,3 được trộn tạo đề theo cấu trúc phân loại giúp các em dễ dàng ôn tập online đề thi giữa học kỳ, thi học kỳ theo các chủ đề đã học.",
           },
           {
             title: "ĐỀ THI THPT QG",
-            img: "typeTest1.jpg",
+            img: "images/home/typeTest1.jpg",
             desc: "Tổng hợp đề thi trắc nghiệm online THPT QG của các môn Toán, Tiếng Anh, Vật lý, Hóa học, Sinh học, Địa lý, Lịch sử, GDCD kèm đáp án và lời giải chi tiết.",
           },
           {
             title: "ĐỀ KIỂM TRA",
-            img: "typeTest3.jpg",
+            img: "images/home/typeTest3.jpg",
             desc: "Hệ thống bài kiểm tra 1 tiết, kiểm tra 15 phút được thiết kế theo hình thức trắc nghiệm online giúp học sinh có thể tạo ra đề tự luyện tập và chấm điểm trực tuyến.",
           },
         ].map((item, index) => (
@@ -88,7 +88,7 @@ const TestOnline = () => {
           {/* Right Image */}
           <div className="w-full md:w-1/2">
             <img
-              src="testEnglish.jpg"
+              src="images/home/testEnglish.jpg"
               alt="Trắc nghiệm Tiếng Anh"
               className="w-full object-cover "
             />
@@ -102,7 +102,7 @@ const TestOnline = () => {
           {/* Left Image */}
           <div className="w-full md:w-1/2">
             <img
-              src="testIT.webp"
+              src="images/home/testIT.webp"
               alt="Trắc nghiệm IT"
               className="w-full object-cover "
             />
