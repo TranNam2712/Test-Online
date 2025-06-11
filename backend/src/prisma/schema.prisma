@@ -1,0 +1,152 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Roles {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(50)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  users Users[]
+}
+
+model Users {
+  id            Int      @id @default(autoincrement())
+  role_id       Int
+  name          String   @db.VarChar(50)
+  phone         String   @unique @db.VarChar(10)
+  avatar        String   @default("assets/users/default.png")
+  email         String   @unique @db.VarChar(50)
+  password      String
+  refresh_token String   @default("")
+  login_type    String   @default("")
+  status        Int      @default(2)
+  createdAt     DateTime @default(now()) // [1 : ACTIVE, 2 : UNACTIVE, 3 : DELETED]
+  updatedAt     DateTime @updatedAt
+
+  role      Roles       @relation(fields: [role_id], references: [id])
+  questions Questions[]
+  reviews   Reviews[]
+  History   Histories[]
+  Tests     Tests[]
+}
+
+model Answers {
+  id          Int      @id @default(autoincrement())
+  question_id Int      @unique
+  answer_text String
+  is_answer   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  question Questions @relation(fields: [question_id], references: [id])
+}
+
+model Questions {
+  id             Int      @id @default(autoincrement())
+  create_by      Int
+  question       String
+  explanation    String   @default("")
+  image_question String   @default("")
+  question_type  Int      @default(1) //  [1 : SINGLE, 2 : MULTIPLE]
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  Users         Users           @relation(fields: [create_by], references: [id])
+  answer        Answers?
+  Test_Question Test_Question[]
+}
+
+model Tests {
+  id              Int      @id @default(autoincrement())
+  categories_id   Int
+  create_by       Int
+  name            String   @db.VarChar(50)
+  slug            String
+  description     String   @default("")
+  image_thumbnail String
+  total_question  Int      @default(0)
+  total_completed Int      @default(0)
+  rating          Int      @default(0)
+  duration        DateTime @default(dbgenerated("'00:00:00'")) @db.Time
+  is_private      Boolean  @default(false)
+  code            String   @default("")
+  status          Int      @default(2) // [1:active, 2: unactive  3:deleted]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  reviews       Reviews[]
+  Test_Question Test_Question[]
+  History       Histories[]
+  category      Categories      @relation(fields: [categories_id], references: [id])
+  user_create   Users           @relation(fields: [create_by], references: [id])
+}
+
+model Test_Question {
+  id          Int      @id @default(autoincrement())
+  test_id     Int
+  question_id Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  question Questions @relation(fields: [question_id], references: [id])
+  test     Tests     @relation(fields: [test_id], references: [id])
+}
+
+model Reviews {
+  id        Int      @id @default(autoincrement())
+  user_id   Int
+  test_id   Int
+  comment   String   @default("")
+  rating    Int      @default(0)
+  status    Int      @default(1)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user Users @relation(fields: [user_id], references: [id])
+  test Tests @relation(fields: [test_id], references: [id])
+}
+
+model Categories {
+  id                Int      @id @default(autoincrement())
+  sub_categories_id Int
+  name              String
+  slug              String
+  description       String   @default("")
+  image_thumbnail   String   @default("assets/categories/default.png")
+  total_test        Int      @default(0)
+  total_completed   Int      @default(0)
+  total_evaluation  Int      @default(0)
+  is_parent         Boolean  @default(false)
+  rating            Int      @default(0)
+  status            Int      @default(2) // int | string [1 : ACTIVE, 2 : UNACTIVE, 3 : DELETED
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  sub_catgories     Categories[] @relation("CategoriesToSub")
+  parent_categories Categories   @relation("CategoriesToSub", fields: [sub_categories_id], references: [id])
+  Tests             Tests[]
+}
+
+model Histories {
+  id             Int      @id @default(autoincrement())
+  user_id        Int
+  test_id        Int
+  total_question Int      @default(0)
+  total_submit   Int      @default(0)
+  total_duration DateTime @default(dbgenerated("'00:00:00'")) @db.Time()
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user Users @relation(fields: [user_id], references: [id])
+  test Tests @relation(fields: [test_id], references: [id])
+}
