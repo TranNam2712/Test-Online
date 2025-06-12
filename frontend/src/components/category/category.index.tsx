@@ -4,7 +4,6 @@ import Breadcrumb from "../UI/bread-crumb";
 import { Text } from "@chakra-ui/react";
 import ListCardCategory from "./category.list-card";
 import HotTestCard from "./category.hot-test";
-// import HotTest from "./category.hot-test";
 
 interface SubCategory {
   id: number;

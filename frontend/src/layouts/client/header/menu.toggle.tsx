@@ -51,7 +51,12 @@ const MenuToggle = ({ categories }: menu) => {
               {categories.map((menu) => (
                 <AccordionItem key={menu.title} border="none">
                   <AccordionButton _hover={{ bg: "blue.600" }}>
-                    <Box as="a" href={menu.slug} flex="1" textAlign="left">
+                    <Box
+                      as="a"
+                      href={`/${menu.slug}`}
+                      flex="1"
+                      textAlign="left"
+                    >
                       {menu.title}
                     </Box>
                     <AccordionIcon />
@@ -60,7 +65,7 @@ const MenuToggle = ({ categories }: menu) => {
                     {menu.subcategories.map((sub) => (
                       <Box
                         as="a"
-                        href={sub.slug}
+                        href={`/${menu.slug}/${sub.slug}`}
                         display="block"
                         py={1}
                         _hover={{ color: "yellow.300" }}
