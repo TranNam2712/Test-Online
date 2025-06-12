@@ -1,13 +1,20 @@
 import { Input, InputGroup, InputRightElement, Text } from "@chakra-ui/react";
 import { RiSearchEyeLine } from "@remixicon/react";
-
-const SearchFilter = () => {
+interface Props {
+  onCloseDrawer?: () => void;
+}
+const SearchFilter = ({ onCloseDrawer }: Props) => {
   return (
     <>
       {" "}
       <div className="w-full flex items-center justify-between">
         <Text fontSize={"lg"}>Tìm kiếm</Text>
-        <Text fontSize={"sm"} color={"blue.400"} cursor={"pointer"}>
+        <Text
+          fontSize={"sm"}
+          color={"blue.400"}
+          cursor={"pointer"}
+          onClick={onCloseDrawer}
+        >
           Xóa bộ lọc
         </Text>
       </div>

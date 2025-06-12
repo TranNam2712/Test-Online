@@ -200,7 +200,7 @@ const SubCategory = () => {
                   <DrawerContent>
                     <DrawerBody>
                       {/* filter card */}
-                      <FilterCard />
+                      <FilterCard onCloseDrawer={onClose} />
                     </DrawerBody>
                   </DrawerContent>
                 </Drawer>

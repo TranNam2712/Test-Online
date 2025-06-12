@@ -3,13 +3,17 @@ import SearchFilter from "./filter/search.filter";
 import RateFilter from "./filter/rate.filter";
 import QuestionFilter from "./filter/question.filter";
 import TimeFilter from "./filter/time.filter";
-const FilterCard = () => {
+
+interface Props {
+  onCloseDrawer?: () => void;
+}
+const FilterCard = ({ onCloseDrawer }: Props) => {
   return (
     <>
       <Card variant={"outline"} shadow={"base"}>
         <CardBody>
           {/* search */}
-          <SearchFilter />
+          <SearchFilter onCloseDrawer={onCloseDrawer} />
 
           {/* filter */}
           <Accordion allowMultiple defaultIndex={[0, 1, 2]}>
