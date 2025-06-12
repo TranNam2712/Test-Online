@@ -4,8 +4,9 @@ import LayoutClient from "../layouts/client/layout.index";
 import Home from "../components/home/home.index";
 import Login from "../pages/auth/login";
 import Register from "../pages/auth/register";
-import Category from "../pages/category/category";
-import SubCategory from "../pages/category/sub-category";
+import Category from "../pages/category";
+import SubCategory from "../pages/sub-category";
+import Test from "../pages/test";
 
 const router = createBrowserRouter([
   {
@@ -27,8 +28,12 @@ const router = createBrowserRouter([
             element: <Category />,
           },
           {
-            path: "/:subCategorySlug",
+            path: ":categorySlug/:subCategorySlug",
             element: <SubCategory />,
+          },
+          {
+            path: ":categorySlug/:subCategorySlug/:testSlug",
+            element: <Test />,
           },
 
           // AUTH ROUTES
