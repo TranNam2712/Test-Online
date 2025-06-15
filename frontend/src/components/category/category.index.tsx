@@ -98,7 +98,14 @@ const Category = () => {
 
   return (
     <>
-      <Breadcrumb current={category.name} />
+      <Breadcrumb
+        items={[
+          {
+            title: category.name,
+            slug: category.slug,
+          },
+        ]}
+      />
       <div className="w-full md:bg-white py-2 px-2 my-5 flex justify-between md:justify-around items-center">
         <div className="w-full max-w-screen-xl mx-auto flex flex-col justify-between items-center">
           {/* title */}

@@ -2,11 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 import LayoutWrapper from "../layouts/layout.wrapper";
 import LayoutClient from "../layouts/client/layout.index";
 import Home from "../components/home/home.index";
-import Login from "../pages/auth/login";
-import Register from "../pages/auth/register";
 import Category from "../pages/category";
 import SubCategory from "../pages/sub-category";
 import Test from "../pages/test";
+import { AuthRoutes } from "./auth.route";
 
 const router = createBrowserRouter([
   {
@@ -27,24 +26,23 @@ const router = createBrowserRouter([
             path: ":categorySlug",
             element: <Category />,
           },
+          // SUB CATEGORY
           {
             path: ":categorySlug/:subCategorySlug",
             element: <SubCategory />,
           },
+          // INFO TEST
           {
             path: ":categorySlug/:subCategorySlug/:testSlug",
             element: <Test />,
           },
-
+          // DOING TEST
+          {
+            path: ":categorySlug/:subCategorySlug/:testSlug/:doTest",
+            element: <Test />,
+          },
           // AUTH ROUTES
-          {
-            path: "/login",
-            element: <Login />,
-          },
-          {
-            path: "/register",
-            element: <Register />,
-          },
+          ...AuthRoutes,
         ],
       },
 
