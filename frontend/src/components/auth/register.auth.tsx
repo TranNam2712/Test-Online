@@ -55,7 +55,7 @@ const Register = () => {
   return (
     <>
       {/* breadcrumb */}
-      <Breadcrumb current="Đăng ký" />
+      <Breadcrumb items={[{ title: "Đăng ký" }]} />
       <Box
         maxW="md"
         mx="auto"

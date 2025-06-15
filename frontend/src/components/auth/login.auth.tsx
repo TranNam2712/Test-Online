@@ -46,7 +46,7 @@ const Login = () => {
   return (
     <>
       {/* breadcrumb */}
-      <Breadcrumb current="Đăng nhập" />
+      <Breadcrumb items={[{ title: "Đăng nhập" }]} />
       <Box
         maxW="md"
         mx="auto"

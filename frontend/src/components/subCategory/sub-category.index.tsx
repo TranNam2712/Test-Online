@@ -1,4 +1,4 @@
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   Box,
   Button,
@@ -42,7 +42,7 @@ interface Category {
 }
 const category: Category = {
   id: 1,
-  slug: "thptqg",
+  slug: "thi-thptqg",
   name: "Thi Thptqg",
   description: "Đề Thi Trắc Nghiệm THPT Quốc Gia 2023",
   is_parent: true,
@@ -84,6 +84,7 @@ const category: Category = {
 interface Test {
   id: number;
   name: string;
+  slug: string;
   img: string;
   description: string;
   time: number;
@@ -95,6 +96,7 @@ const tests: Test[] = [
   {
     id: 1,
     name: "Đề thi Trắc nghiệm THPT Quốc Gia Môn Toán học Năm 2019 - Mã đề thi 101",
+    slug: "de-thi-trac-nghiem-thpt-quoc-gia-mon-toan-hoc-nam-2019-ma-de-thi-101-1",
     img: "/images/subCategory/mon-toan.jpg",
     description: "Môn Toán - Nâng cao",
     time: 0,
@@ -104,8 +106,8 @@ const tests: Test[] = [
   {
     id: 2,
     name: "Đề thi THPT Quốc Gia Môn Toán học Năm 2017 - Mã đề thi 101",
+    slug: "de-thi-thpt-quoc-gia-mon-toan-hoc-nam-2017-ma-de-thi-101-2",
     img: "/images/subCategory/mon-toan.jpg",
-
     description: "Môn Toán - Nâng cao",
     time: 0,
     attend: 21,
@@ -114,8 +116,8 @@ const tests: Test[] = [
   {
     id: 3,
     name: "Đề thi THPT Quốc Gia Môn Toán học Năm 2020 - Mã đề thi 102",
+    slug: "de-thi-thpt-quoc-gia-mon-toan-hoc-nam-2020-ma-de-thi-102-3",
     img: "/images/subCategory/mon-toan.jpg",
-
     description: "Môn Toán - Nâng cao",
     time: 0,
     attend: 134,
@@ -124,8 +126,8 @@ const tests: Test[] = [
   {
     id: 4,
     name: "Đề thi THPT Quốc Gia Môn Toán học Năm 2018 - Mã đề thi 103",
+    slug: "de-thi-thpt-quoc-gia-mon-toan-hoc-nam-2018-ma-de-thi-103-4",
     img: "/images/subCategory/mon-toan.jpg",
-
     description: "Môn Toán - Nâng cao",
     time: 0,
     attend: 87,
@@ -134,8 +136,8 @@ const tests: Test[] = [
   {
     id: 5,
     name: "Đề thi Thử THPT Quốc Gia Môn Toán học Trường A - Mã đề thi 104",
+    slug: "de-thi-thu-thpt-quoc-gia-mon-toan-hoc-truong-a-ma-de-thi-104-5",
     img: "/images/subCategory/mon-toan.jpg",
-
     description: "Môn Toán - Nâng cao",
     time: 0,
     attend: 56,
@@ -144,8 +146,8 @@ const tests: Test[] = [
   {
     id: 6,
     name: "Đề thi Thử THPT Quốc Gia Môn Toán học Trường B - Mã đề thi 105",
+    slug: "de-thi-thu-thpt-quoc-gia-mon-toan-hoc-truong-b-ma-de-thi-105-6",
     img: "/images/subCategory/mon-toan.jpg",
-
     description: "Môn Toán - Nâng cao",
     time: 0,
     attend: 99,
@@ -154,8 +156,8 @@ const tests: Test[] = [
   {
     id: 7,
     name: "Đề thi THPT Quốc Gia Môn Toán học Năm 2021 - Mã đề thi 106",
+    slug: "de-thi-thpt-quoc-gia-mon-toan-hoc-nam-2021-ma-de-thi-106-7",
     img: "/images/subCategory/mon-toan.jpg",
-
     description: "Môn Toán - Nâng cao",
     time: 0,
     attend: 301,
@@ -164,8 +166,8 @@ const tests: Test[] = [
   {
     id: 8,
     name: "Đề thi THPT Quốc Gia Môn Toán học Năm 2022 - Mã đề thi 107",
+    slug: "de-thi-thpt-quoc-gia-mon-toan-hoc-nam-2022-ma-de-thi-107-8",
     img: "/images/subCategory/mon-toan.jpg",
-
     description: "Môn Toán - Nâng cao",
     time: 0,
     attend: 175,
@@ -174,14 +176,22 @@ const tests: Test[] = [
 ];
 
 const SubCategory = () => {
-  //   const { categorySlug } = useParams();
+  const { categorySlug, subCategorySlug } = useParams<{
+    categorySlug: string;
+    subCategorySlug: string;
+  }>();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef<HTMLButtonElement>(null);
   const isMobile = useBreakpointValue({ base: true, md: false }) ?? false;
 
   return (
     <>
-      <Breadcrumb current={category.name} />
+      <Breadcrumb
+        items={[
+          { title: category.name, slug: categorySlug },
+          { title: subCategorySlug ?? "" },
+        ]}
+      />
       <div className="w-full md:bg-white py-2 px-4 my-5 flex justify-between md:justify-around items-center">
         <div className="w-full max-w-screen-xl mx-auto flex flex-col justify-between items-center">
           {/* main */}

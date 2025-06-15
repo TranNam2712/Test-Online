@@ -12,11 +12,12 @@ import {
   RiQuestionAnswerLine,
   RiTimeLine,
 } from "@remixicon/react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 interface Test {
   id: number;
   name: string;
+  slug: string;
   img: string;
   description: string;
   time: number;
@@ -25,6 +26,10 @@ interface Test {
 }
 
 const TestCard = ({ test }: { test: Test }) => {
+  const { categorySlug, subCategorySlug } = useParams<{
+    categorySlug: string;
+    subCategorySlug: string;
+  }>();
   return (
     <Box
       borderWidth="1px"
@@ -78,7 +83,7 @@ const TestCard = ({ test }: { test: Test }) => {
 
       {/* Tiêu đề đề thi */}
       <Box p={4}>
-        <NavLink to={"/"}>
+        <NavLink to={`/${categorySlug}/${subCategorySlug}/${test.slug}`}>
           <Text
             fontSize="lg"
             cursor={"pointer"}

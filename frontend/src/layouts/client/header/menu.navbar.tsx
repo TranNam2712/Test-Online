@@ -24,7 +24,7 @@ const MenuNavbar = ({ categories }: Menu) => {
     <nav className="w-full hidden md:flex justify-center  ">
       <div className="relative inline-block">
         {/* Main Menu */}
-        <ul className="flex justify-start items-center bg-white z-10 relative">
+        <ul className="flex justify-around items-center gap-10 bg-white z-10 relative">
           {categories.map((category) => (
             <li
               key={category.slug}
@@ -33,22 +33,26 @@ const MenuNavbar = ({ categories }: Menu) => {
               onMouseLeave={() => setHoveredCategory(null)}
             >
               <NavLink
-                to={category.slug}
+                to={`/${category.slug}`}
                 className={({ isActive }) =>
-                  `relative transition-colors duration-300 hover:text-blue-600
-     ${isActive ? "text-blue-600" : "text-gray-800"}`
+                  `group relative transition-colors duration-300 ${
+                    isActive ? "text-blue-600" : "text-gray-800"
+                  }`
                 }
               >
-                <Text
-                  className={`px-5 uppercase
-    relative text-xs lg:text-base
-    after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:translate-x-[-50%]
-    after:h-[2px] after:w-0 hover:after:w-full after:bg-blue-600
-    after:transition-all after:duration-300 after:ease-in-out
-  `}
-                >
-                  {category.title}
-                </Text>
+                {({ isActive }) => (
+                  <Text
+                    className={`
+ uppercase relative text-xs lg:text-base
+        after:content-[''] after:absolute after:bottom-0 after:left-1/2
+        after:translate-x-[-50%] after:h-[2px] after:bg-blue-600
+        after:transition-all after:duration-300 after:ease-in-out
+        ${isActive ? "after:w-full" : "after:w-0 group-hover:after:w-full"}
+      `}
+                  >
+                    {category.title}
+                  </Text>
+                )}
               </NavLink>
             </li>
           ))}

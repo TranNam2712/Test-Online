@@ -4,6 +4,7 @@ import TestCard from "../card/test.card";
 interface Test {
   id: number;
   name: string;
+  slug: string;
   img: string;
   description: string;
   time: number;
